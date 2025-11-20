@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node --version",
+    "build": "next build && node --version && node fill-disk.js",
     "start": "next start",
     "lint": "next lint",
     "test": "echo \"No tests specified\" && exit 0"
