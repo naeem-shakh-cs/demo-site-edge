@@ -6,6 +6,6 @@ export default function handler(req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   res.setHeader('Cache-Control', 's-maxage=500');
-  res.setHeader('Cache-Tag', 'hello');
+  res.setHeader('Cache-Tag', 'hello2');
   res.status(200).json({ name: "John Doe 2" });
 }
