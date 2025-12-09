@@ -93,11 +93,11 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         const percentage = (usageRatio * 100).toFixed(2);
 
         console.log(`Current storage usage: ${sizeMB} MB (${sizeGB} GB)`);
-        console.log(`CPU Stats:`);
-        console.log(`  - Total Cores Available: ${totalCores}`);
-        console.log(`  - Current Usage: ${millicores}m (${percentage}% of 1 core)`);
-        console.log(`  - Raw Consumption (Chunk): User ${(cpuDelta.user / 1000).toFixed(2)}ms, System ${(cpuDelta.system / 1000).toFixed(2)}ms`);
-        console.log(`  - Total Accumulated: User ${(currentCpuUsage.user / 1000).toFixed(2)}ms, System ${(currentCpuUsage.system / 1000).toFixed(2)}ms`);
+         // console.log(`CPU Stats:`);
+        // console.log(`  - Total Cores Available: ${totalCores}`);
+        // console.log(`  - Current Usage: ${millicores}m (${percentage}% of 1 core)`);
+        // console.log(`  - Raw Consumption (Chunk): User ${(cpuDelta.user / 1000).toFixed(2)}ms, System ${(cpuDelta.system / 1000).toFixed(2)}ms`);
+        // console.log(`  - Total Accumulated: User ${(currentCpuUsage.user / 1000).toFixed(2)}ms, System ${(currentCpuUsage.system / 1000).toFixed(2)}ms`);
 
         // Add delay to slow down the fill rate
         await sleep(WRITE_DELAY_MS);
