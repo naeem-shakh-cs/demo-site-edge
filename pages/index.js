@@ -20,6 +20,13 @@ const buttonOnClick = () =>{
   });
 }
 
+export async function getServerSideProps() {
+  // Force server-side rendering so Cloudflare can process the HTML
+  return {
+    props: {},
+  };
+}
+
 export default function Home() {
   return (
     <main
