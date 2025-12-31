@@ -20,13 +20,6 @@ const buttonOnClick = () =>{
   });
 }
 
-export async function getServerSideProps() {
-  // Force server-side rendering so Cloudflare can process the HTML
-  return {
-    props: {},
-  };
-}
-
 export default function Home() {
   return (
     <main
@@ -142,6 +135,8 @@ export default function Home() {
       <footer style={{ marginTop: '2rem', padding: '1rem', textAlign: 'center' }}>
         <p>Contact us at: <a href="mailto:abc@csapps.com">abc@csapps.com</a></p>
         <p>Email: abc@csapps.com</p>
+        {/* Additional email formats for Cloudflare to detect */}
+        <a href="mailto:abc@csapps.com">abc@csapps.com</a>
       </footer>
     </main>
   );
