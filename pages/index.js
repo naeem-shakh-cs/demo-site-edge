@@ -20,12 +20,6 @@ const buttonOnClick = () =>{
   });
 }
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
-
 export default function Home() {
   return (
     <main
@@ -138,7 +132,10 @@ export default function Home() {
       </div>
       <button onClick={buttonOnClick}>Click me</button>
               
-      <a href="mailto:abc@csapps.com">contact us</a>
+      <footer style={{ marginTop: '2rem', padding: '1rem', textAlign: 'center' }}>
+        <p>Contact us at: <a href="mailto:abc@csapps.com">abc@csapps.com</a></p>
+        <p>Email: abc@csapps.com</p>
+      </footer>
     </main>
   );
 }
