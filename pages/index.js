@@ -132,7 +132,7 @@ export default function Home() {
       </div>
       <button onClick={buttonOnClick}>Click me</button>
               
-      <a href="mailto:abc.csapps.com">contact us</a>
+      <a href="mailto:abc@csapps.com">contact us</a>
     </main>
   );
 }
