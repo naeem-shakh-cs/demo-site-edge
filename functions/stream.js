@@ -1,5 +1,9 @@
 export default async function handler(request, response) {
-  const encoder = new TextEncoder();
+  response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  response.setHeader('Transfer-Encoding', 'chunked');
+  response.setHeader('Cache-Control', 'no-cache');
+  response.setHeader('X-Accel-Buffering', 'no');
+  response.status(200);
 
   const chunks = [
     'Starting stream...\n',
@@ -15,24 +19,11 @@ export default async function handler(request, response) {
   ];
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const intervalMs = 1000;
 
-  const stream = new ReadableStream({
-    async start(controller) {
-      for (const chunk of chunks) {
-        controller.enqueue(encoder.encode(chunk));
-        await delay(intervalMs);
-      }
-      controller.close();
-    },
-  });
+  for (const chunk of chunks) {
+    response.write(chunk);
+    await delay(1000);
+  }
 
-  return new Response(stream, {
-    status: 200,
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'no-cache',
-      'X-Accel-Buffering': 'no',
-    },
-  });
+  response.end();
 }
