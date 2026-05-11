@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   ];
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const intervalMs = 1000;
+  const intervalMs = 3000;
 
   for (const chunk of chunks) {
     res.write(chunk);
