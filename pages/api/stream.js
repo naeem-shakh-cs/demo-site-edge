@@ -5,10 +5,13 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.socket?.setNoDelay(true);
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Transfer-Encoding', 'chunked');
   res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('X-Accel-Buffering', 'no');
+  res.flushHeaders();
+  // Padding flushes the browser's 1KB render buffer so chunks appear immediately
+  res.write('<pre>' + ' '.repeat(1024) + '\n');
 
   const chunks = [
     'Starting stream...\n',
@@ -24,12 +27,14 @@ export default async function handler(req, res) {
   ];
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const intervalMs = 3000;
+  const intervalMs = 500;
 
   for (const chunk of chunks) {
     res.write(chunk);
+    if (typeof res.flush === 'function') res.flush();
     await delay(intervalMs);
   }
 
+  res.write('</pre>');
   res.end();
 }
