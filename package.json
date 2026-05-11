@@ -10,6 +10,7 @@
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
+    "async-function": "^1.0.0",
     "axios": "^1.6.8",
     "next": "14.1.0",
     "react": "^18",
