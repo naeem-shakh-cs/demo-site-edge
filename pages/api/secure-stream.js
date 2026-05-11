@@ -19,6 +19,10 @@ function checkBasicAuth(req) {
 }
 
 export default async function handler(req, res) {
+  const authHeader = req.headers['authorization'];
+  console.log('auth header received:', authHeader);
+  console.log('all headers:', JSON.stringify(req.headers, null, 2));
+
   if (!checkBasicAuth(req)) {
     res.setHeader('WWW-Authenticate', 'Basic realm="Secure Stream"');
     res.status(401).end('Unauthorized');
